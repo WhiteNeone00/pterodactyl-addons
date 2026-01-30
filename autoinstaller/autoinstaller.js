@@ -15,7 +15,7 @@ async function getaddon() {
         process.stdout.write(`Search for the transaction ${transactionid} (This can take some seconds) ${P[x++]}`);
         x %= P.length;
     }, 250);
-    const req = axios.get('https://api.bagou450.com/index.php/api/client/pterodactyl/checkIfExist', {params : {id: transactionid}}).then(res => {
+    const req = axios.get('https://api.whee.lol/index.php/api/client/pterodactyl/checkIfExist', {params : {id: transactionid}}).then(res => {
         clearInterval(loader)
         process.stdout.clearLine(0);
         process.stdout.cursorTo(0);
@@ -61,7 +61,7 @@ async function startinstall(transaction, name, theme) {
         process.stdout.write(`Get installation program of ${name} (This can take some seconds) ${P[x++]}`);
         x %= P.length;
     }, 250);
-    const req = axios.get(`https://api.bagou450.com/index.php/api/client/pterodactyl/getautoinstaller?id=${transaction}&selectaddon=${name}`).then(async res => {
+    const req = axios.get(`https://api.whee.lol/index.php/api/client/pterodactyl/getautoinstaller?id=${transaction}&selectaddon=${name}`).then(async res => {
         clearInterval(loader)
         process.stdout.clearLine(0);
         process.stdout.cursorTo(0);
@@ -177,7 +177,7 @@ function buildassets() {
     }, 250);
     exec('yarn install && yarn add html-react-parser && yarn build:production && chown -R www-data:www-data * && php artisan route:clear && php artisan cache:clear && php artisan migrate --seed --force', (err, stdout, stderr) => {
         if (err) {
-            process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR DURING ASSET BUILDING. (STEP 5)\n Run the yarn build:production command after screen the result and send it with your transaction id to contact@bagou450.com\x1b[0m\n`);
+            process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR DURING ASSET BUILDING. (STEP 5)\n Run the yarn build:production command after screen the result and send it with your transaction id to contact@whee.lol\x1b[0m\n`);
             process.exit(1);
 
         }
