@@ -22,7 +22,7 @@ class BagouSettingsController extends Controller
      */
     public function index(): View
     {
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
         return view('admin.bagoucenter.settings.index', [            'addonslist' => $addonslist,
         'licenses' => $licenses]);
@@ -33,7 +33,7 @@ class BagouSettingsController extends Controller
      */
     public function addon(string $addon): View
     {
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
         return view($addon['tabroute'], ['addonslist' => $addonslist,
         'licenses' => $licenses]);

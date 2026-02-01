@@ -5,4 +5,4 @@ BUT FOLLOW BEFORE PANEL EDIT!
 For use the addon with stellar you need to upload content of stellarfiles folder.
 after do a yarn build:production
 
-For any problem contact me on discord http://discord.bagou450.com
+For any problem contact me on discord http://discord.whee.lol

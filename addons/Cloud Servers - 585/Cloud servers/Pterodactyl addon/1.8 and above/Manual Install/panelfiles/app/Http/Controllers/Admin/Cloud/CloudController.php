@@ -73,7 +73,7 @@ class CloudController extends Controller
         $nodeselection = Setting::where('key', 'cloud_nodeselect')->first();
         $locationselection = Setting::where('key', 'cloud_locationselect')->first();
         $transaction = Bagoulicense::where('addon', '585')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license = $license->object();
         if ($code !== 200) {
@@ -105,7 +105,7 @@ class CloudController extends Controller
     public function savesettings(Request $request, Server $server)
     {
         $transaction = Bagoulicense::where('addon', '585')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");;
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");;
         $code = $license->status();
         $license =  $license->object();
         if ($code !== 200) {

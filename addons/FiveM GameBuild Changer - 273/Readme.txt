@@ -191,6 +191,6 @@ chown -R www-data:www-data *
 
 
 FOR A URGENT HELP CONTACT ME DIRECTLY BY SMS OR EMAIL!!
-If you need help contact me on discord : http://discord.bagou450.com/ (or https://discord.gg/bagou450)
+If you need help contact me on discord : http://discord.whee.lol/ (or https://discord.gg/whee)
 You don't have discord ? Send me a SMS to +33 7 56 89 00 36 (Unsurcharged number, No call)
-You prefer emails? Send a email to contact@bagou450.com
+You prefer emails? Send a email to contact@whee.lol

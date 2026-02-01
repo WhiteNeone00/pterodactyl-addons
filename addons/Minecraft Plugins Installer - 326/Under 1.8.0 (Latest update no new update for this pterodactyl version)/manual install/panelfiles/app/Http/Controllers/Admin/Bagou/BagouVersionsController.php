@@ -22,7 +22,7 @@ class BagouVersionsController extends Controller
      */
     public function index(): View
     {
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
         return view('admin.bagoucenter.versions.index', ['addonslist' => $addonslist, 'licenses' => $licenses]);
     }
@@ -34,16 +34,16 @@ class BagouVersionsController extends Controller
         $licenses = Bagoulicense::all();
         foreach($licenses as $license) {
             $id = $license['license'];
-            $version = Http::get("https://api.bagou450.com/api/client/pterodactyl/getVersion?id=$id");
+            $version = Http::get("https://api.whee.lol/api/client/pterodactyl/getVersion?id=$id");
             if($version->failed()) {
-                $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+                $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
                 $this->alert->danger('Error!')->flash();
                 return view('admin.bagoucenter.versions.index', ['addonslist' => $addonslist, 'licenses' => $licenses]);
             } else {
                 Bagoulicense::where('license', '=', $id)->update(['version' => $version->json()['version']]);
             }
         }
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
 
         $this->alert->success('Versions updated sucessfully!')->flash();

@@ -1,19 +1,14 @@
 {
-  "./filetoedit.txt": [
-    {
-      "type": "above",
-      "where": "ABOVE",
-      "add": "THIS TEXT IS ABOVE"
-    },
-    {
-      "type": "under",
-      "where": "UNDER",
-      "add": "THIS TEXT IS UNDER"
-    },
-    {
-      "type": "replace",
-      "where": "REPLACE",
-      "add": "THIS TEXT REPLACE THE OLD TEXT"
-    }
-  ]
+    "./app/Http/Controllers/Admin/Bagou/": [
+        {
+            "type": "folder"
+        }
+    ],
+    "./database/migrations/2026_01_31_000000_create_addon_450_migration.php": [
+        {
+            "type": "newfile",
+            "theme": "any",
+            "add": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\n\nclass CreateAddon450Migration extends Migration\n{\n    public function up()\n    {\n        // Free addon - no license required\n    }\n\n    public function down()\n    {\n        // No cleanup needed\n    }\n}\n"
+        }
+    ]
 }

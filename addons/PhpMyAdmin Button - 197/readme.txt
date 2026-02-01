@@ -38,4 +38,4 @@ yarn build:production
 chown -R www-data:www-data *
 
 
-If you need suport check our addon FAQ: https://bagou450.com/product/197 
+If you need suport check our addon FAQ: https://whee.lol/product/197 

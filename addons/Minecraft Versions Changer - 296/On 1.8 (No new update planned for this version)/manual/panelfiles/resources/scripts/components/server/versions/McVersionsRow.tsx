@@ -222,7 +222,7 @@ console.log(dockerimage)
       </ConfirmationModal>
       <div css={tw`mx-auto`}>
         <div css={tw`flex`}>
-          <img src={stype !== 'modpacks' ? `https://cdn.bagou450.com/img/${stype}-icon.jpg` : modpacktype !== 'others' ? `https://cdn.bagou450.com/img/modpacks/${minecraftVersions.name.toLowerCase()}.png` : minecraftVersions.icon} css={tw`mr-3 h-8 w-8`} />
+          <img src={stype !== 'modpacks' ? `https://cdn.whee.lol/img/${stype}-icon.jpg` : modpacktype !== 'others' ? `https://cdn.whee.lol/img/modpacks/${minecraftVersions.name.toLowerCase()}.png` : minecraftVersions.icon} css={tw`mr-3 h-8 w-8`} />
             {stype === 'modpacks' ? (
               <p css={tw`my-auto`}>
                 {modpacktype === 'others' ? minecraftVersions.name : minecraftVersions.version}{' : '}

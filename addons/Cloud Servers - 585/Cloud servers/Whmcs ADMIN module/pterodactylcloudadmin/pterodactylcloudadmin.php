@@ -338,7 +338,7 @@ function pterodactylcloudadmin_LoginLink(array $params) {
     try {
         $hostname = pterodactylcloudadmin_GetHostname($params);
         echo '<a style="padding-right:3px" href="'.$hostname.'/admin/users/view/' . $user['attributes']['id'] . '" target="_blank">[View the user]</a>';
-        echo '<p style="float:right; padding-right:1.3%">[<a href="https://discord.bagou450.com" target="_blank">Report A Bug</a>]</p>';
+        echo '<p style="float:right; padding-right:1.3%">[<a href="https://discord.whee.lol" target="_blank">Report A Bug</a>]</p>';
         # echo '<p style="float: right">[<a href="https://github.com/pterodactyl/whmcs/issues" target="_blank">Report A Bug</a>]</p>';
     } catch(Exception $err) {
         // Ignore

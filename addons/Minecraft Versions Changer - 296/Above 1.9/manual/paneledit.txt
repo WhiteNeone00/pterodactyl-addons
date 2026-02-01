@@ -170,7 +170,7 @@ Route::group(['prefix' => 'bagoucenter'], function () {
 
                         <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.bagoucenter') ?: 'active' }}">
                             <a href="{{ route('admin.bagoucenter')}}">
-                                <i class="fa fa-globe"></i> <span>Bagou Center</span>
+                                <i class="fa fa-globe"></i> <span>Whee Center</span>
                             </a>
                         </li>
 
@@ -199,8 +199,8 @@ YOUR LICENSE : CONTACT ME ON DISCORD
 IF YOU HAVE A CUSTOM MC EGG WITH CUSTOM DOCKER IMAGE THE ADDON ARE GOING TO RETURN A ERROR PLEASE CONTACT ME ON DISCORD
 
 FOR A URGENT HELP CONTACT ME DIRECTLY BY SMS OR EMAIL!!
-If you need help contact me on discord : http://discord.bagou450.com/ (or https://discord.gg/bagou450)
+If you need help contact me on discord : http://discord.whee.lol/ (or https://discord.gg/whee)
 You don't have discord ? Send me a SMS to +33 7 56 89 00 36 (Unsurcharged number, No call)
-You prefer emails? Send a email to contact@bagou450.com
+You prefer emails? Send a email to contact@whee.lol
 
 

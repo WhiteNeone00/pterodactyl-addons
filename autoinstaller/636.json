@@ -1,0 +1,21 @@
+{
+    "./app/Http/Controllers/Admin/Bagou/": [
+        {
+            "type": "folder"
+        }
+    ],
+    "./database/migrations/2026_01_31_000000_create_addon_636_license_table.php": [
+        {
+            "type": "newfile",
+            "theme": "any",
+            "add": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateAddon636LicenseTable extends Migration\n{\n    public function up()\n    {\n        // Verify license in licenses table\n        // SELECT * FROM licenses WHERE product_id = 636 AND license = :license AND blacklisted = 0\n    }\n\n    public function down()\n    {\n        // No cleanup needed\n    }\n}\n"
+        }
+    ],
+    "./routes/api.php": [
+        {
+            "type": "checkfile",
+            "find": "Route::get('/addon/636/verify',",
+            "add": "Route::post('/addon/636/verify', function (Illuminate\\Http\\Request \) {\n    // Verify license for addon 636\n    $licenseService = app(\\App\\Services\\LicenseService::class);\n    $result = \->checkLicense(\n        $request->input('license'),\n        '636',\n        $request->ip(),\n        true\n    );\n    \n    if ($result === 'SUCCESS') {\n        return response()->json(['message' => 'License valid', 'addon_id' => 636]);\n    }\n    \n    return response()->json(['message' => $result, 'error' => true], 400);\n})->middleware('api');\n"
+        }
+    ]
+}

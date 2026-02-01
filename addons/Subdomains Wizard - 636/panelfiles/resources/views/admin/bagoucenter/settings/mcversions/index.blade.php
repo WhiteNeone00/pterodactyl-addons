@@ -2,32 +2,32 @@
 @include('partials/admin.settings.nav', ['activeTab' => 'basic'])
 
 @section('title')
-    Bagou License
+    Whee Service
 @endsection
 
 @section('content-header')
-    <h1>Bagou Center<small>Manage all bagou450 addons.</small></h1>
+    <h1>Whee Service Hub<small>Manage all Whee Service addons.</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin.index') }}">Admin</a></li>
-        <li class="active">Bagou Center</li>
+        <li class="active">Whee Service Hub</li>
     </ol>
 @endsection
 @section('content')
-    @include('admin.bagoucenter.nav')
-    @include('admin.bagoucenter.settings.nav', ['addon' => null, 'addonslist' => $addonslist, 'licenses' => $licenses])
+@include('admin.bagoucenter.nav')
+@include('admin.bagoucenter.settings.nav', ['addon' => null, 'addonslist' => $addonslist, 'licenses' => $licenses])
 
-    <div class="row" style="margin-top: 15px;">
+<div class="row" style="margin-top: 15px;">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Bagou Modpacks list</h3>
+                    <h3 class="box-title">Whee Service Modpacks list</h3>
                     <div class="box-tools">
-                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#newModPackModal">Create New</button>
-                    </div>
+                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#newModPackModal">Create New</button>
+                </div>
                 </div>
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tbody>
+                <table class="table table-hover">
+                    <tbody>
                         <tr>
                             <th>Icon</th>
                             <th>Name</th>
@@ -46,63 +46,63 @@
                                 <td>{{ $modpack->url }}</td>
                                 <td>
                                     <a href="#" data-action="remove-modpack" data-attr="{{ $modpack->id }}">
-                                        <i class="fa fa-trash text-danger"></i>
+                                        <i class="fa fa-trash-can text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
                         @endforeach
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="newModPackModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ route('admin.bagoucenter.settings.addon.mcversions') }}" method="POST">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Create New Modpack</h4>
                 </div>
-            </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="pName" class="form-label">Name</label>
+                        <input type="text" name="name" id="pName" class="form-control" />
+                        <p class="text-muted small">The name of the modpack</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="pHost" class="form-label">Version</label>
+                            <input type="text" name="version" id="pVersion" class="form-control" />
+                            <p class="text-muted small">The version of the modpack</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="pPort" class="form-label">Minecraft Version</label>
+                            <input type="text" name="mcversion" id="pMcversion" class="form-control"/>
+                            <p class="text-muted small">The Minecraft version of the modpack.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pUrl" class="form-label">Url</label>
+                        <input type="text" name="url" id="pUrl" class="form-control" />
+                        <p class="text-muted small">The download url of the modpack (This MUST be a direct download link)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="pIcon" class="form-label">Icon</label>
+                        <input type="text" name="icon" id="pIcon" class="form-control" />
+                        <p class="text-muted small">The icon of the modpack (must be a direct link).</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {!! csrf_field() !!}
+                    <button type="button" class="btn btn-secondary btn-sm pull-left" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm">Create</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="modal fade" id="newModPackModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="{{ route('admin.bagoucenter.settings.addon.mcversions') }}" method="POST">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Create New Modpack</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="pName" class="form-label">Name</label>
-                            <input type="text" name="name" id="pName" class="form-control" />
-                            <p class="text-muted small">The name of the modpack</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="pHost" class="form-label">Version</label>
-                                <input type="text" name="version" id="pVersion" class="form-control" />
-                                <p class="text-muted small">The version of the modpack</p>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="pPort" class="form-label">Minecraft Version</label>
-                                <input type="text" name="mcversion" id="pMcversion" class="form-control"/>
-                                <p class="text-muted small">The Minecraft version of the modpack.</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="pUrl" class="form-label">Url</label>
-                            <input type="text" name="url" id="pUrl" class="form-control" />
-                            <p class="text-muted small">The download url of the modpack (This MUST be a direct download link)</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="pIcon" class="form-label">Icon</label>
-                            <input type="text" name="icon" id="pIcon" class="form-control" />
-                            <p class="text-muted small">The icon of the modpack (must be a direct link).</p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        {!! csrf_field() !!}
-                        <button type="button" class="btn btn-secondary btn-sm pull-left" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success btn-sm">Create</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+</div>
 @endsection
 
 @section('footer-scripts')
@@ -124,7 +124,7 @@
                 }, function () {
                     $.ajax({
                         method: 'DELETE',
-                        url: '/admin/bagoucenter/settings/addon/mcversion/' + self.data('attr'),
+                        url: '/admin/bagoucenter/settings/addon/mcversions/' + self.data('attr'),
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         }

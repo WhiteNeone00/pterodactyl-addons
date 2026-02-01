@@ -4,11 +4,11 @@
             "type": "folder"
         }
     ],
-    "./database/migrations/2022_07_04_151819_create_bagoulicense_table.php": [
+    "./database/migrations/2026_01_31_000000_create_addon_438_migration.php": [
         {
             "type": "newfile",
             "theme": "any",
-            "add": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateBagoulicenseTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('bagoulicense', function (Blueprint $table) {\n            $table->id();\n            $table->string('addon');\n            $table->string('license');\n            $table->integer('usage');\n            $table->integer('maxusage');\n            $table->boolean('enabled');\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('bagoulicense');\n    }\n}"
+            "add": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\n\nclass CreateAddon438Migration extends Migration\n{\n    public function up()\n    {\n        // Free addon - no license required\n    }\n\n    public function down()\n    {\n        // No cleanup needed\n    }\n}\n"
         }
     ]
 }

@@ -116,5 +116,5 @@ mkdir /var/www/pterodactyl/public/servericon/minecraft
 chown -R www-data:www-data *
 
 
-If you need help contact me on discord : http://discord.bagou450.com/ (or https://discord.com/invite/98MdvaS3Qj)
+If you need help contact me on discord : http://discord.whee.lol/ (or https://discord.com/invite/98MdvaS3Qj)
 You don't have discord ? Send me a sms to +33 7 56 89 00 36 (Unsurcharged number)

@@ -38,7 +38,7 @@ class EggUrlBagouImporterService
             return new BadRequestHttpException('No license for this addons please setup the license trough admin tab.');
         }
         $license = $license['license'];
-        $parsed = Http::get("http://api.bagou450.com/api/client/pterodactyl/modpacks/getEgg?id=$license&type=$type")->json();
+        $parsed = Http::get("http://api.whee.lol/api/client/pterodactyl/modpacks/getEgg?id=$license&type=$type")->json();
         $egg = Egg::where('name', '=', $parsed['name'])->first();
         if(!$egg || $egg === null) {
             $nest = Nest::query()->with('eggs', 'eggs.variables')->findOrFail($nest);

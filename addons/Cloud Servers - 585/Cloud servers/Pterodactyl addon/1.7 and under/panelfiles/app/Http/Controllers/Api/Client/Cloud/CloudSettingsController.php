@@ -43,7 +43,7 @@ class CloudSettingsController extends ClientApiController
     public function setcloudname(Request $request)
     {
         $transaction = Bagoulicense::where('addon', 'cloudservers')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
 

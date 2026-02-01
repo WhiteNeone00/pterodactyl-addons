@@ -24,7 +24,7 @@ class BagouMcVersionsController extends Controller
      */
     public function index(): View
     {
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
         $modpacks = MinecraftModpacks::get();
         return view('admin.bagoucenter.settings.mcversions.index', ['licenses' => $licenses, 'addonslist' => $addonslist, 'modpacks' => $modpacks]);

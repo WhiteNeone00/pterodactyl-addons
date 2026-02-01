@@ -78,7 +78,7 @@ class ModPacksController extends ClientApiController
             }
             $license = $license['license'];
 
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/modpacks/', ['page' => $request->page, 'search' => $request->search, 'id' => $license, 'type' => $request->type, 'game_versions' => $request->version, 'loaders' => $request->loader]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/modpacks/', ['page' => $request->page, 'search' => $request->search, 'id' => $license, 'type' => $request->type, 'game_versions' => $request->version, 'loaders' => $request->loader]);
 
         }
         public function getMcVersions(Request $request)
@@ -88,7 +88,7 @@ class ModPacksController extends ClientApiController
                 return new BadRequestHttpException('No license for this addons please setup the license trough admin tab.');
             }
             $license = $license['license'];
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/modpacks/getMcVersions', ['id' => $license]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/modpacks/getMcVersions', ['id' => $license]);
         }
 
 
@@ -101,7 +101,7 @@ class ModPacksController extends ClientApiController
             }
             $license = $license['license'];
 
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/mods/versions', ['modId' => $request->modId, 'page' => $request->page, 'id' => $license, 'type' => $request->type]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/mods/versions', ['modId' => $request->modId, 'page' => $request->page, 'id' => $license, 'type' => $request->type]);
         }
 
         public function getModpacksDescription(Request $request)
@@ -112,7 +112,7 @@ class ModPacksController extends ClientApiController
             }
             $license = $license['license'];
 
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/modpacks/getMcModpacksDescription', ['modpackId' => $request->modpackId, 'id' => $license, 'type' => $request->type]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/modpacks/getMcModpacksDescription', ['modpackId' => $request->modpackId, 'id' => $license, 'type' => $request->type]);
         }
 
 
@@ -135,7 +135,7 @@ class ModPacksController extends ClientApiController
                     $url = $request->modpack["downloadlink"];
 
                     $url = Http::get(
-                        "https://api.bagou450.com/api/client/pterodactyl/modpacks/download?id=$license&data=$url&type=voidswrath"
+                        "https://api.whee.lol/api/client/pterodactyl/modpacks/download?id=$license&data=$url&type=voidswrath"
                     )->json();
                     if ($url['message'] !== "Good") {
                         return ["status" => "error", "response" => []];
@@ -247,7 +247,7 @@ class ModPacksController extends ClientApiController
 
                 $modpackid = $request->modpack['id'];
                 $downloaddata = Http::get(
-                    "https://api.bagou450.com/api/client/pterodactyl/modpacks/download?id=$license&type=curseforge&modpackid=$modpackid"
+                    "https://api.whee.lol/api/client/pterodactyl/modpacks/download?id=$license&type=curseforge&modpackid=$modpackid"
                 )->object();
                 if($downloaddata->message == 'Error') {
                     throw new NotFoundHttpException();
@@ -292,7 +292,7 @@ class ModPacksController extends ClientApiController
 
                 $modpackid = $request->modpack['id'];
                 $downloaddata = Http::get(
-                    "https://api.bagou450.com/api/client/pterodactyl/modpacks/download?id=$license&type=modrinth&modpackid=$modpackid"
+                    "https://api.whee.lol/api/client/pterodactyl/modpacks/download?id=$license&type=modrinth&modpackid=$modpackid"
                 )->object();
                 if($downloaddata->message == 'Error') {
                     dd($downloaddata);

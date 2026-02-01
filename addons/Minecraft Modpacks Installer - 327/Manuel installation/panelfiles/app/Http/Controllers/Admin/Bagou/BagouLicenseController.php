@@ -24,7 +24,7 @@ class BagouLicenseController extends Controller
      */
     public function index(): View
     {
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
         return view('admin.bagoucenter.license.index', ['addonslist' => $addonslist, 'licenses' => $licenses]);
     }
@@ -37,7 +37,7 @@ class BagouLicenseController extends Controller
     public function license(string $addon): View
     {
         $dbaddon = Bagoulicense::where('addon', $addon)->first();
-        $addonslist = Http::get('https://api.bagou450.com/api/client/pterodactyl/addonsList')->json();
+        $addonslist = Http::get('https://api.whee.lol/api/client/pterodactyl/addonsList')->json();
         $licenses = Bagoulicense::all();
         return view('admin.bagoucenter.license.license', [
             'addon' => $addon,
@@ -57,7 +57,7 @@ class BagouLicenseController extends Controller
      */
     public function setlicense(Request $request, $addon): RedirectResponse
     {   
-        $license = Http::accept('application/json')->post("https://api.bagou450.com/api/client/pterodactyl/license", [
+        $license = Http::accept('application/json')->post("https://api.whee.lol/api/client/pterodactyl/license", [
             'id' => $request->license,
             'selectaddon' => $addon
         ])->object();
@@ -108,7 +108,7 @@ class BagouLicenseController extends Controller
                     return redirect()->route('admin.bagoucenter.license.addon', $addon);
                 }
                 $transaction = $transaction['license'];
-                $license = Http::delete("https://api.bagou450.com/api/client/pterodactyl/license?id=$transaction")->object();
+                $license = Http::delete("https://api.whee.lol/api/client/pterodactyl/license?id=$transaction")->object();
                 Bagoulicense::where('addon', $addon)->delete();
                 $this->alert->success('License removed sucessfully')->flash();
                 return redirect()->route('admin.bagoucenter.license.addon', $addon);        

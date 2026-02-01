@@ -9,7 +9,7 @@
                     <a href="{{ route('admin.bagoucenter.settings') }}">Overview</a>
                 </li>
                 @foreach ($addonslist as $addonn)
-                            @foreach($licenses as $license)
+                            @foreach($licenses as $license) 
                                 @if($license->addon == $addonn['id'] && $addonn['tab'])
                                     @php
                                         $found = true;
@@ -20,9 +20,6 @@
                                 @endif
                             @endforeach
                 @endforeach
-                <li>
-                    <a href="{{ route('admin.bagoucenter.settings.subdomain.index')  }}">SubDomain</a>
-                </li>
             </ul>
         </div>
     </div>

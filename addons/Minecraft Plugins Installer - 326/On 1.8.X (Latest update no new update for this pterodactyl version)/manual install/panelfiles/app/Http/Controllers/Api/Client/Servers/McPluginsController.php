@@ -49,22 +49,22 @@ class McPluginsController extends ClientApiController
         //dd(Mcplugins::where('plugin', "Lib's Disguises [Free]")->where('server_id', $server->id)->value('installdate')->toIso8601String());
         if ($request->type == '1') {
         if ($request->searchFilter) {
-            return $this->addinstalled($server, Http::accept('application/json')->get("https://api.bagou450.com/api/client/pterodactyl/plugins/spigot?id=$license&page=$request->page&size=20&search=$request->searchFilter&category=4&sort=downloads&field=name")->json());
+            return $this->addinstalled($server, Http::accept('application/json')->get("https://api.whee.lol/api/client/pterodactyl/plugins/spigot?id=$license&page=$request->page&size=20&search=$request->searchFilter&category=4&sort=downloads&field=name")->json());
         } else {
-        $plugins = Http::accept('application/json')->get("https://api.bagou450.com/api/client/pterodactyl/plugins/spigot?id=$license&category=$request->category&size=20&page=$request->page&sort=-downloads&fields=id,name,tag,file,testedVersions,links,external,version,author,category,rating,icon,releaseDate,updateDate,downloads,premium&version=$request->version")->json();
+        $plugins = Http::accept('application/json')->get("https://api.whee.lol/api/client/pterodactyl/plugins/spigot?id=$license&category=$request->category&size=20&page=$request->page&sort=-downloads&fields=id,name,tag,file,testedVersions,links,external,version,author,category,rating,icon,releaseDate,updateDate,downloads,premium&version=$request->version")->json();
         return $this->addinstalled($server, $plugins);
            }
         } else if($request->type == '2') {
             if ($request->searchFilter) {
-                $url = "https://api.bagou450.com/api/client/pterodactyl/plugins/bukkit?id=$license&page=$request->page?&searchFilter=$request->searchFilter&search=$request->searchFilter&version=$request->version";
+                $url = "https://api.whee.lol/api/client/pterodactyl/plugins/bukkit?id=$license&page=$request->page?&searchFilter=$request->searchFilter&search=$request->searchFilter&version=$request->version";
             } else {
-                $url = "https://api.bagou450.com/api/client/pterodactyl/plugins/bukkit?id=$license&page=$request->page&search=$request->searchFilter&version=$request->version";
+                $url = "https://api.whee.lol/api/client/pterodactyl/plugins/bukkit?id=$license&page=$request->page&search=$request->searchFilter&version=$request->version";
             }
             return $this->addinstalled($server, Http::accept('application/json')->get($url)->json()); 
         } else if($request->type == '3') {
             $url = $_SERVER['SERVER_NAME'];
             $page = $request->page*10;
-            $plugins = Http::accept('application/json')->get("https://api.bagou450.com/api/client/pterodactyl/plugins/polymart?id=$license&page=$request->page&search=$request->searchFilter&version=$request->version")->object(); 
+            $plugins = Http::accept('application/json')->get("https://api.whee.lol/api/client/pterodactyl/plugins/polymart?id=$license&page=$request->page&search=$request->searchFilter&version=$request->version")->object(); 
             foreach ($plugins as $key => $plugin) {
                 $plugins[$key]->installed = 0;
                 $plugins[$key]->installedate = date('Y-m-d H:i');
@@ -111,7 +111,7 @@ class McPluginsController extends ClientApiController
         $license = $license['license'];
         if(!Mcplugins::where('plugin', $request->plugin)->where('server_id', $server->id)->exists()) {
                 if(str_starts_with($request->url, 'polymart')) {
-                    $link = Http::get("https://api.bagou450.com/api/client/pterodactyl/plugins/download?id=$license&url=$request->url")->json()['url'];
+                    $link = Http::get("https://api.whee.lol/api/client/pterodactyl/plugins/download?id=$license&url=$request->url")->json()['url'];
 
                 } else {
                     $link = $request->url;
@@ -165,7 +165,7 @@ class McPluginsController extends ClientApiController
             return new BadRequestHttpException('No license for this addons please setup the license trough admin tab.');
         }
         $license = $license['license'];
-        return Http::get("https://api.bagou450.com/api/client/pterodactyl/plugins/getVersions?id=$license&type=$request->type&pluginId=$request->pluginId&page=$request->page");
+        return Http::get("https://api.whee.lol/api/client/pterodactyl/plugins/getVersions?id=$license&type=$request->type&pluginId=$request->pluginId&page=$request->page");
     }
     public function getMcVersions(Request $request)
     {
@@ -175,7 +175,7 @@ class McPluginsController extends ClientApiController
         }
         $license = $license['license'];
 
-        return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/plugins/getMcVersions', ['id' => $license, 'type' => $request->type]);
+        return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/plugins/getMcVersions', ['id' => $license, 'type' => $request->type]);
     }
 }
 

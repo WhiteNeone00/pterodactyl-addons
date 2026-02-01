@@ -51,7 +51,7 @@ class ModsController extends ClientApiController
             }
             $license = $license['license'];
 
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/mods', ['page' => $request->page, 'search' => $request->search, 'id' => $license, 'type' => $request->type, 'game_versions' => $request->version, 'loaders' => $request->loader]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/mods', ['page' => $request->page, 'search' => $request->search, 'id' => $license, 'type' => $request->type, 'game_versions' => $request->version, 'loaders' => $request->loader]);
 
         }
 
@@ -63,7 +63,7 @@ class ModsController extends ClientApiController
             }
             $license = $license['license'];
             
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/mods/versions', ['modId' => $request->modId, 'page' => $request->page, 'id' => $license, 'type' => $request->type]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/mods/versions', ['modId' => $request->modId, 'page' => $request->page, 'id' => $license, 'type' => $request->type]);
         }
 
         public function description(Request $request)
@@ -74,7 +74,7 @@ class ModsController extends ClientApiController
             }
             $license = $license['license'];
 
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/mods/description', ['modId' => $request->modId, 'id' => $license, 'type' => $request->type]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/mods/description', ['modId' => $request->modId, 'id' => $license, 'type' => $request->type]);
         }
 
         public function mcversions(Request $request)
@@ -85,7 +85,7 @@ class ModsController extends ClientApiController
             }
             $license = $license['license'];
 
-            return Http::accept('application/json')->get('https://api.bagou450.com/api/client/pterodactyl/mods/getMcVersions', ['id' => $license]);
+            return Http::accept('application/json')->get('https://api.whee.lol/api/client/pterodactyl/mods/getMcVersions', ['id' => $license]);
         }
         public function install(Request $request, Server $server)
         {

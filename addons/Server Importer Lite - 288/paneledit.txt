@@ -169,5 +169,5 @@ And build the panel assets :
 yarn build:production
 chown -R www-data:www-data *
 
-If you need help contact us : https://beta.bagou450.com/contact
+If you need help contact us : https://beta.whee.lol/contact
 

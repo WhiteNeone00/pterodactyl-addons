@@ -354,7 +354,7 @@ add :
                         </li>
                         <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.bagoucenter') ?: 'active' }}">
                             <a href="{{ route('admin.bagoucenter')}}">
-                                <i class="fa fa-globe"></i> <span>Bagou Center</span>
+                                <i class="fa fa-globe"></i> <span>Whee Center</span>
                             </a>
                         </li>
                         
@@ -764,9 +764,9 @@ YOUR LICENSE :
 FOR PTERODACTYLMARKET USERS : SELLER_DOWNLOADED
 
 
-If you need help contact me on discord : http://discord.bagou450.com/ (or https://discord.com/invite/98MdvaS3Qj)
+If you need help contact me on discord : http://discord.whee.lol/ (or https://discord.com/invite/98MdvaS3Qj)
 You don't have discord ? Send me a SMS to +33 7 56 89 00 36 (Unsurcharged number, No call)
-You prefer emails? Send a email to contact@bagou450.com
+You prefer emails? Send a email to contact@whee.lol
 
 
 

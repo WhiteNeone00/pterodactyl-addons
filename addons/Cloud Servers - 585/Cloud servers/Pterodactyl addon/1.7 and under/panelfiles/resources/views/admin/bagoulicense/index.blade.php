@@ -6,7 +6,7 @@
 @endsection
 
 @section('content-header')
-    <h1>Bagou License<small>Configure license for Bagou450 Addons.</small></h1>
+    <h1>Bagou License<small>Configure license for Whee Service Addons.</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin.index') }}">Admin</a></li>
         <li class="active">Bagou License</li>

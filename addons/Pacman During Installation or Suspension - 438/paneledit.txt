@@ -25,5 +25,5 @@ And build the panel assets :
 yarn build:production
 chown -R www-data:www-data *
 
-For any inquiries or questions, please refer to our Helpdesk at https://help.bagou450.com.
-Should you require further assistance, do not hesitate to reach out to us via our contact page at https://bagou450.com/contact.
+For any inquiries or questions, please refer to our Helpdesk at https://help.whee.lol.
+Should you require further assistance, do not hesitate to reach out to us via our contact page at https://whee.lol/contact.

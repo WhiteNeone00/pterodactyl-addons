@@ -47,7 +47,7 @@ class UserController extends Controller
     public function suspend(User $user)
     {
         $transaction = Bagoulicense::where('addon', '585')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
         if ($code !== 200) {
@@ -77,7 +77,7 @@ class UserController extends Controller
     public function removecloud(User $user)
     {
         $transaction = Bagoulicense::where('addon', '585')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
         if ($code !== 200) {

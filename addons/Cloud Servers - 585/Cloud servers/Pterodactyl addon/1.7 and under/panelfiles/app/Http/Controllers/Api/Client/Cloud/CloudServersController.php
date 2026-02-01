@@ -68,7 +68,7 @@ class CloudServersController extends ClientApiController
 
     public function search(Request $request) {
         $transaction = Bagoulicense::where('addon', 'cloudservers')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
     if ($code !== 200) {
@@ -86,7 +86,7 @@ class CloudServersController extends ClientApiController
 
     public function create(Request $request) {
         $transaction = Bagoulicense::where('addon', 'cloudservers')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
     if ($code !== 200) {
@@ -250,7 +250,7 @@ class CloudServersController extends ClientApiController
      */
     public function delete(Request $request) {
         $transaction = Bagoulicense::where('addon', 'cloudservers')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
     if ($code !== 200) {
@@ -275,7 +275,7 @@ class CloudServersController extends ClientApiController
      */
     public function suspend(Request $request) {
         $transaction = Bagoulicense::where('addon', 'cloudservers')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
     if ($code !== 200) {
@@ -301,7 +301,7 @@ class CloudServersController extends ClientApiController
 
     public function edit(Request $request, User $user) {
         $transaction = Bagoulicense::where('addon', 'cloudservers')->firstOrFail()->license;
-        $license = Http::get("https://api.bagou450.com/api/client/pterodactyl/checklicense?id=$transaction&name=585");
+        $license = Http::get("https://api.whee.lol/api/client/pterodactyl/checklicense?id=$transaction&name=585");
         $code = $license->status();
         $license =  $license->object();
     if ($code !== 200) {

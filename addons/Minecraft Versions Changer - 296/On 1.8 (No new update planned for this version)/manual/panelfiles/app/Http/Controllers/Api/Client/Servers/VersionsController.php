@@ -51,7 +51,7 @@ class VersionsController extends ClientApiController
         } else {
             $versions = Http::accept("application/json")
                 ->get(
-                    "https://api.bagou450.com/api/client/pterodactyl/mcversions?id=$license&stype=$versionsType&url=$url&page=$request->page&modpacktype=$request->modpacktype"
+                    "https://api.whee.lol/api/client/pterodactyl/mcversions?id=$license&stype=$versionsType&url=$url&page=$request->page&modpacktype=$request->modpacktype"
                 )
                 ->json();
         }
@@ -78,7 +78,7 @@ class VersionsController extends ClientApiController
         if ($request->type == "3") {
             $url = $request->minecraftVersions["Url"];
             $url = Http::get(
-                "https://api.bagou450.com/api/client/pterodactyl/mcversions/download?id=$license&type=$request->type&version=$version&stype=$request->stype&url=$url&zip=no"
+                "https://api.whee.lol/api/client/pterodactyl/mcversions/download?id=$license&type=$request->type&version=$version&stype=$request->stype&url=$url&zip=no"
             )->json();
         } else {
             if (
@@ -91,7 +91,7 @@ class VersionsController extends ClientApiController
                     $url = array('message' => 'Good', 'data' => $request->minecraftVersions["url"], 'size' => get_headers($request->minecraftVersions["url"], true)['Content-Length']);
                 } else {
                     $url = Http::get(
-                        "https://api.bagou450.com/api/client/pterodactyl/mcversions/download?id=$license&type=$request->type&version=" .
+                        "https://api.whee.lol/api/client/pterodactyl/mcversions/download?id=$license&type=$request->type&version=" .
                         rawurlencode($version) .
                         "&stype=" .
                         rawurlencode($request->stype) .
@@ -104,7 +104,7 @@ class VersionsController extends ClientApiController
                 }
             } else {
                 $url = Http::get(
-                    "https://api.bagou450.com/api/client/pterodactyl/mcversions/download?id=$license&type=$request->type&version=$version&stype=$request->stype&url=a&zip=no"
+                    "https://api.whee.lol/api/client/pterodactyl/mcversions/download?id=$license&type=$request->type&version=$version&stype=$request->stype&url=a&zip=no"
                 )->json();
             }
         }

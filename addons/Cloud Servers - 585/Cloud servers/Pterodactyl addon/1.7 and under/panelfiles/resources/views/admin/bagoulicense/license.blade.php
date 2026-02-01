@@ -6,7 +6,7 @@
 @endsection
 
 @section('content-header')
-    <h1>Bagou License<small>Configure license for Bagou450 Addons.</small></h1>
+    <h1>Bagou License<small>Configure license for Whee Service Addons.</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin.index') }}">Admin</a></li>
         <li class="active">Bagou License</li>
@@ -62,7 +62,7 @@
 @endsection
 
 @section('content-header')
-    <h1>Bagou License<small>Configure license for Bagou450 Addons.</small></h1>
+    <h1>Bagou License<small>Configure license for Whee Service Addons.</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin.index') }}">Admin</a></li>
         <li class="active">Bagou License</li>
@@ -84,7 +84,7 @@
                                 <label class="control-label">Addon license (Transaction id)</label>
                                 <div>
                                     <input type="text" class="form-control" name="license" value="{{ $license }}" />
-                                    <p class="text-muted"><small>Add here your transaction id if not work contact me on <a href="https://discord.bagou450.com">discord</a></small></p>
+                                    <p class="text-muted"><small>Add here your transaction id if not work contact me on <a href="https://discord.whee.lol">discord</a></small></p>
                                 </div>
                             </div>
                             <div class="form-group col-md-4">

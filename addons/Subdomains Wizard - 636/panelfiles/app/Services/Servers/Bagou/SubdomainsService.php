@@ -50,7 +50,7 @@ class SubdomainsService
             $data['secret'] = decrypt($domain->secret);
         }
 
-        $apirequest = Http::post( "https://api.bagou450.com/api/client/pterodactyl/subdomains", $data);
+        $apirequest = Http::post( "https://api.whee.lol/api/client/pterodactyl/subdomains", $data);
         if(!$apirequest->successful()) {
             return [
                 'status' => 'error',
@@ -116,7 +116,7 @@ class SubdomainsService
         }
 
 
-        $apirequest = Http::delete("https://api.bagou450.com/api/client/pterodactyl/subdomains", $data)->object();
+        $apirequest = Http::delete("https://api.whee.lol/api/client/pterodactyl/subdomains", $data)->object();
         if ($apirequest->status !== 'success') {
             return [
                 'status' => 'error',

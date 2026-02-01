@@ -2,14 +2,14 @@
 @include('partials/admin.settings.nav', ['activeTab' => 'basic'])
 
 @section('title')
-    Bagou Center - list domains
+    Whee Center - list domains
 @endsection
 
 @section('content-header')
-<h1>Bagou Center<small>Manage all bagou450 addons.</small></h1>
+<h1>Whee Center<small>Manage all Whee Service addons.</small></h1>
 <ol class="breadcrumb">
     <li><a href="{{ route('admin.index') }}">Admin</a></li>
-    <li class="active">Bagou Center</li>
+    <li class="active">Whee Center</li>
 </ol>
 @endsection
 @section('content')
