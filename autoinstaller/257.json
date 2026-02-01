@@ -236,5 +236,13 @@
             "where": "        {\n            path: '/minecraft/modpacks',\n            permission: 'file.*',\n            name: 'Modpacks',\n            nestId: 1,\n            component: McModpacksContainer,\n        },",
             "add": "        {\n            path: '/minecraft/mods',\n            permission: 'file.*',\n            name: 'Mod Installer',\n            nestId: 1,\n            component: McModsContainer,\n        },"
         }
+    ],
+    "./routes/api-client.php": [
+        {
+            "type": "under",
+            "theme": "pterodactyl",
+            "where": "            Route::get('/modpacks', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'index']);\n            Route::post('/modpacks/install', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'install']);\n        });\n    });",
+            "add": "\n    Route::group(['prefix' => '/mcmodpacks'], function () {\n        Route::get('/', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'getModPacks']);\n        Route::get('/mcversions', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'getMcVersions']);\n        Route::get('/description', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'getModpacksDescription']);\n        Route::get('/getversionsize', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'getversionsize']);\n        Route::post('/install', [Client\\Servers\\Bagou\\Minecraft\\ModPacksController::class, 'install']);\n    });\n\n    Route::group(['prefix' => '/mods'], function () {\n        Route::get('/curse', [Client\\Servers\\ModsController::class, 'curse']);\n        Route::get('/mcversions', [Client\\Servers\\ModsController::class, 'mcversions']);\n        Route::get('/description', [Client\\Servers\\ModsController::class, 'description']);\n        Route::get('/versions', [Client\\Servers\\ModsController::class, 'versions']);\n        Route::post('/install', [Client\\Servers\\ModsController::class, 'install']);\n    });"
+        }
     ]
 }
