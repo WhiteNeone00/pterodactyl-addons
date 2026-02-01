@@ -1,24 +1,55 @@
 const fs = require('fs');
+const path = require('path');
 const axios = require('axios');
 const readline = require('readline-sync');
 const { exec } = require('child_process');
+const tty = require('tty');
+const os = require('os');
 
 let files = {}
 const P = ['\\', '|', '/', '-'];
 let x = 0;
 global.nbedited = 0;
+
+// Helper function to clear line and reset cursor (cross-platform)
+const clearCurrentLine = () => {
+    try {
+        process.stdout.clearLine(0);
+        process.stdout.cursorTo(0);
+    } catch (e) {
+        // Fallback for environments where these methods aren't available
+        process.stdout.write('\r\x1b[2K');
+    }
+};
+
+const moveCursorUp = (n = 1) => {
+    try {
+        process.stdout.moveCursor(0, -n);
+    } catch (e) {
+        process.stdout.write(`\x1b[${n}A`);
+    }
+};
+
+const clearLineDown = () => {
+    try {
+        process.stdout.clearLine(1);
+    } catch (e) {
+        process.stdout.write('\x1b[0J');
+    }
+};
+
 async function getaddon() {
     const transactionid = readline.question('BETA: Enter your license (If you bought it on BuiltByBits check your discution): ');
     const loader = setInterval(() => {
-        process.stdout.clearLine(0);
-        process.stdout.cursorTo(0);
+        clearCurrentLine();
+        // cursor moved
         process.stdout.write(`Search for the transaction ${transactionid} (This can take some seconds) ${P[x++]}`);
         x %= P.length;
     }, 250);
     const req = axios.get('https://api.whee.lol/index.php/api/client/pterodactyl/checkIfExist', {params : {id: transactionid}}).then(res => {
         clearInterval(loader)
-        process.stdout.clearLine(0);
-        process.stdout.cursorTo(0);
+        clearCurrentLine();
+        // cursor moved
         process.stdout.write("Transaction found ✅");
         if (res.status >= 400) {
             process.stdout.write(`\n This license is invalid i can't install any addon with that `);
@@ -57,27 +88,27 @@ async function getaddon() {
 async function startinstall(transaction, name, theme) {
     const loader = setInterval(() => {
         console.clear()
-        process.stdout.cursorTo(0);
+        // cursor moved
         process.stdout.write(`Get installation program of ${name} (This can take some seconds) ${P[x++]}`);
         x %= P.length;
     }, 250);
     const req = axios.get(`https://api.whee.lol/index.php/api/client/pterodactyl/getautoinstaller?id=${transaction}&selectaddon=${name}`).then(async res => {
         clearInterval(loader)
-        process.stdout.clearLine(0);
-        process.stdout.cursorTo(0);
+        clearCurrentLine();
+        // cursor moved
         process.stdout.write("Installer downloaded ✅\n");
         const files = res.data
         const nbofedit = Object.keys(files).length;
         const load = setInterval(() => {
             if(nbofedit <= nbedited) {
                 clearInterval(load)
-                process.stdout.moveCursor(0, -1)
-                process.stdout.clearLine(1)
+                moveCursorUp(1)
+                clearLineDown()
                 process.stdout.write(`Instalation done ✅\n`);
                 buildassets()
             }
-            process.stdout.moveCursor(0, -1)
-            process.stdout.clearLine(1)
+            moveCursorUp(1)
+            clearLineDown()
             process.stdout.write(`Instalation in progress please wait... (This can take some seconds) ${P[x++]}\n`);
             x %= P.length;
         }, 250);
@@ -130,14 +161,17 @@ function doedit(files, file, theme) {
 
 
                 }
-                fs.writeFile(file, content, (err) => {
-                    if (err) {
-                        process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR DURING EDITING ${file}. (STEP 3)\n`);
+                const dir = path.dirname(file);
+                fs.mkdir(dir, { recursive: true }, (err) => {
+                    fs.writeFile(file, content, (err) => {
+                        if (err) {
+                            process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR DURING EDITING ${file}. (STEP 3)\n`);
 
-                        process.exit(1);
-                    }
-                    global.nbedited ++
+                            process.exit(1);
+                        }
+                        global.nbedited ++
 
+                    });
                 });
             });
 
@@ -145,22 +179,27 @@ function doedit(files, file, theme) {
 
 
     } else if (files[file][0]['type'] != "newfile" && files[file][0]['type'] == "folder") {
-        fs.mkdir(file, (err) => {
+        fs.mkdir(file, { recursive: true }, (err) => {
             global.nbedited ++
 
         });
         global.nbedited ++
     } else {
         setTimeout(() => {
-            fs.writeFile(file, files[file][0]['add'], (err) => {
+            const dir = path.dirname(file);
+            fs.mkdir(dir, { recursive: true }, (err) => {
                 if (err) {
-                    process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR DURING EDITING ${file}. (STEP 4)\x1b[0m\n`);
-
-
+                    process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR CREATING DIRECTORY ${dir}. (STEP 3)\x1b[0m\n`);
                     process.exit(1);
                 }
-                global.nbedited ++
+                fs.writeFile(file, files[file][0]['add'], (err) => {
+                    if (err) {
+                        process.stdout.write(`\n\x1b[31m\x1b[1m❌ ERROR DURING EDITING ${file}. (STEP 4)\x1b[0m\n`);
+                        process.exit(1);
+                    }
+                    global.nbedited ++
 
+                });
             });
         }, 2000);
 
@@ -170,8 +209,8 @@ function doedit(files, file, theme) {
 function buildassets() {
     process.stdout.write('\n')
     const load = setInterval(() => {
-        process.stdout.moveCursor(0, -1)
-        process.stdout.clearLine(1)
+        moveCursorUp(1)
+        clearLineDown()
         process.stdout.write(`Build panel assets (this can take some minutes)... ${P[x++]}\n`);
         x %= P.length;
     }, 250);
@@ -181,8 +220,8 @@ function buildassets() {
             process.exit(1);
 
         }
-        process.stdout.moveCursor(0, -1)
-        process.stdout.clearLine(1)
+        moveCursorUp(1)
+        clearLineDown()
         process.stdout.write(`Build panel assets done ✅\n`);
         clearInterval(load)
         process.stdout.write("Addon installed successfully ✅\n");
