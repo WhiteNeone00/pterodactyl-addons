@@ -222,5 +222,19 @@
             "theme": "any",
             "add": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\n\nclass Addon257Install extends Migration\n{\n    public function up()\n    {\n        // Addon 257 installation\n        // All files have been copied\n    }\n\n    public function down()\n    {\n        // Addon 257 removal\n    }\n}\n"
         }
+    ],
+    "./resources/scripts/routers/routes.ts": [
+        {
+            "type": "under",
+            "theme": "pterodactyl",
+            "where": "import McModpacksContainer from '@/components/server/mcmodpacks/McModpacksContainer';",
+            "add": "\nimport McModsContainer from '@/components/server/mcmods/McModsContainer';"
+        },
+        {
+            "type": "under",
+            "theme": "pterodactyl",
+            "where": "        {\n            path: '/minecraft/modpacks',\n            permission: 'file.*',\n            name: 'Modpacks',\n            nestId: 1,\n            component: McModpacksContainer,\n        },",
+            "add": "        {\n            path: '/minecraft/mods',\n            permission: 'file.*',\n            name: 'Mod Installer',\n            nestId: 1,\n            component: McModsContainer,\n        },"
+        }
     ]
 }
